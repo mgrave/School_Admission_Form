@@ -1,14 +1,10 @@
-import { Button, ButtonGroup } from "@material-tailwind/react";
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
   return (
     <div>
-      <h2>School Admission Form</h2>
-      <ButtonGroup>
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
-      </ButtonGroup>
+      {/* <h2>School Admission Form</h2> */}
+      <Outlet></Outlet>
     </div>
   );
 };
