@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import logo from "../../assets/Logo.png";
 
 const Signup = () => {
   const { signUp } = useContext(AuthContext);
@@ -26,8 +27,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <Card color="transparent" shadow={false}>
+    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50">
+      <Card color="transparent" shadow={false} className="flex items-center">
+        <img src={logo} alt="" className="w-28" />
         <Typography variant="h4" color="blue-gray">
           Sign Up
         </Typography>
@@ -90,7 +92,7 @@ const Signup = () => {
             )}
           </div>
           <Button
-            className="mt-6 bg-teal-200 text-sm"
+            className="mt-6 bg-brown-400 text-sm text-white"
             color="white"
             type="submit"
             fullWidth

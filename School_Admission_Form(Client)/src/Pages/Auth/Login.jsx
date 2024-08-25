@@ -1,12 +1,14 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import logo from "../../assets/Logo.png";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,6 +18,7 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         Swal.fire("Successfully Signed Up");
+        navigate("/DashboardLayout");
         const signedUser = result.user;
         console.log(signedUser);
       })
@@ -24,8 +27,9 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <Card color="transparent" shadow={false}>
+    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50">
+      <Card color="transparent" shadow={false} className="flex items-center">
+        <img src={logo} alt="" className="w-28" />
         <Typography variant="h4" color="blue-gray">
           Log in
         </Typography>
@@ -71,12 +75,12 @@ const Login = () => {
             )}
           </div>
           <Button
-            className="mt-6 bg-teal-200 text-sm"
+            className="mt-6 bg-brown-400 text-sm text-white"
             color="white"
             type="submit"
             fullWidth
           >
-            sign up
+            Log in
           </Button>
           <Typography color="gray" className="mt-4 text-center font-normal">
             New User?{" "}

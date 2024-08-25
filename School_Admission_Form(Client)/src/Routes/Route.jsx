@@ -1,25 +1,42 @@
 import { createBrowserRouter } from "react-router-dom";
-import Root from "../Layout/Root/Root";
-import Login from "../Pages/Auth/Login";
-import Signup from "../Pages/Auth/Signup";
+import Root from "../layout/Root/Root";
+import Login from "../pages/Auth/Login";
+import Signup from "../pages/Auth/Signup";
+import Profile from "../Pages/Dashboard/Profile/Profile";
+import DashboardLayout from "../Layout/DasboardLayout/DashboardLayout";
+import AdmissionForm from "../Pages/Dashboard/AdmissionForm/AdmissionForm";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
+    element: <Root />,
     children: [
       {
         path: "/",
-        element: <Signup></Signup>,
-        // element: <Login></Login>,
+        element: <Signup />,
+        // element: <Login />,
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
+      {
+        path: "admissionForm",
+        element: <AdmissionForm />,
       },
       // {
-      //   path: "/",
-      //   element: <Signup></Signup>,
+      //   path: "settings",
+      //   element: <Settings />,
       // },
     ],
   },
