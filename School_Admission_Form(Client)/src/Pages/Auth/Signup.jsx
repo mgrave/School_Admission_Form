@@ -1,13 +1,13 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import Swal from "sweetalert2";
 import logo from "../../assets/Logo.png";
 
 const Signup = () => {
   const { signUp } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,7 +17,7 @@ const Signup = () => {
   const onSubmit = (data) => {
     signUp(data.email, data.password)
       .then((result) => {
-        Swal.fire("User Created Successfully");
+        navigate("/dashboard/home");
         const signedUser = result.user;
         console.log(signedUser);
       })
@@ -27,16 +27,20 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50">
-      <Card color="transparent" shadow={false} className="flex items-center">
-        <img src={logo} alt="" className="w-28" />
+    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50 px-4 sm:px-6 lg:px-8">
+      <Card
+        color="transparent"
+        shadow={false}
+        className="flex flex-col items-center w-full max-w-md sm:w-96 p-6"
+      >
+        <img src={logo} alt="" className="w-28 mb-4" />
         <Typography variant="h4" color="blue-gray">
           Sign Up
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
+        <Typography color="gray" className="mt-1 font-normal text-center">
           Nice to meet you! Enter your details to register.
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 sm:w-96">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 w-full">
           <div className="mb-1 flex flex-col gap-2">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Your Name
@@ -44,8 +48,8 @@ const Signup = () => {
             <Input
               {...register("name", { required: true })}
               size="lg"
-              placeholder="type your name here"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              placeholder="Type your name here"
+              className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -62,7 +66,7 @@ const Signup = () => {
               {...register("email", { required: true })}
               size="lg"
               placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -80,7 +84,7 @@ const Signup = () => {
               type="password"
               size="lg"
               placeholder="********"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -97,17 +101,14 @@ const Signup = () => {
             type="submit"
             fullWidth
           >
-            sign up
+            Sign up
           </Button>
-          <p color="gray" className="mt-4 text-center font-normal">
+          <Typography color="gray" className="mt-4 text-center font-normal">
             Already have an account?{" "}
-            {/* <a href="#" className="font-medium text-gray-900">
-              
-            </a> */}
             <Link to="/login" className="font-medium text-gray-900">
               Login
             </Link>
-          </p>
+          </Typography>
         </form>
       </Card>
     </div>

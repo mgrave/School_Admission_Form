@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import Swal from "sweetalert2";
 import logo from "../../assets/Logo.png";
 
 const Login = () => {
@@ -17,8 +16,7 @@ const Login = () => {
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then((result) => {
-        Swal.fire("Successfully Signed Up");
-        navigate("/DashboardLayout");
+        navigate("/dashboard/home");
         const signedUser = result.user;
         console.log(signedUser);
       })
@@ -27,16 +25,20 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50">
-      <Card color="transparent" shadow={false} className="flex items-center">
-        <img src={logo} alt="" className="w-28" />
+    <div className="flex items-center justify-center min-h-screen bg-deep-orange-50 px-4 sm:px-6 lg:px-8">
+      <Card
+        color="transparent"
+        shadow={false}
+        className="flex flex-col items-center w-full max-w-md sm:w-96 p-6"
+      >
+        <img src={logo} alt="" className="w-28 mb-4" />
         <Typography variant="h4" color="blue-gray">
           Log in
         </Typography>
-        <Typography color="gray" className="mt-1 font-normal">
+        <Typography color="gray" className="mt-1 font-normal text-center">
           Nice to meet you! Please Login first.
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 sm:w-96">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 mb-2 w-full">
           <div className="mb-1 flex flex-col gap-2">
             <Typography variant="h6" color="blue-gray" className="-mb-3">
               Your Email
@@ -45,7 +47,7 @@ const Login = () => {
               {...register("email", { required: true })}
               size="lg"
               placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
@@ -63,7 +65,7 @@ const Login = () => {
               type="password"
               size="lg"
               placeholder="********"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+              className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
