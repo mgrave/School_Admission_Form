@@ -30,13 +30,13 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-     git clone https://github.com/moriyam-mohona/School_Admission_Form.git
+   https://github.com/moriyam-mohona/School_Admission_Form.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-cd School_Admission_Form
+   cd School_Admission_Form
    ```
 
 3. Install the necessary dependencies:
@@ -61,7 +61,7 @@ The form is designed to be intuitive and easy to use:
 2. Choose options from the dropdown menus for fields like gender, class, and section.
 3. Submit the form and the data will be sent to the server.
 
-
+## Folder Structure
 
 - **Components**: Contains reusable components used throughout the application.
 - **Context**: Manages the global state and context.
