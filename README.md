@@ -1,4 +1,4 @@
-# Admission Form
+# Online School Admission Form
 
 This repository contains the source code for an **Online School Admission Form** built using React and Material Tailwind. The form collects student information and other related data, validates the input, and submits it to the server.
 
@@ -16,8 +16,8 @@ This project is a simple admission form designed for educational institutions. I
 ## Technologies Used
 
 - **Frontend**: React, Material Tailwind
-- **Backend**: Nodejs, ExpressJs
-- **Database**: MongoDb
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
 - **Form Handling**: React Hook Form
 - **State Management**: React Query
 - **API Communication**: Axios
@@ -30,13 +30,13 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone [https://github.com/your-username/admission-form.git](https://github.com/moriyam-mohona/School_Admission_Form.git)
+     git clone https://github.com/moriyam-mohona/School_Admission_Form.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd admission-form
+cd School_Admission_Form
    ```
 
 3. Install the necessary dependencies:
@@ -59,7 +59,7 @@ The form is designed to be intuitive and easy to use:
 
 1. Fill in the required fields marked with an asterisk (*).
 2. Choose options from the dropdown menus for fields like gender, class, and section.
-3. Submit the form, and the data will be sent to the server.
+3. Submit the form and the data will be sent to the server.
 
 
 
@@ -70,7 +70,7 @@ The form is designed to be intuitive and easy to use:
 
 ## Contributing
 
-If you would like to contribute to this project, feel free to fork the repository and submit a pull request. Any contributions are welcome!
+If you want to contribute to this project, feel free to fork the repository and submit a pull request. Any contributions are welcome!
 
 
 ## Contact
