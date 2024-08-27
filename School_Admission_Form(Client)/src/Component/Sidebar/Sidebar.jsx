@@ -1,29 +1,39 @@
+import { useState, useContext } from "react";
 import {
-  Card,
+  IconButton,
   Typography,
   List,
   ListItem,
   ListItemPrefix,
+  Drawer,
+  Card,
 } from "@material-tailwind/react";
 import {
   PresentationChartBarIcon,
   UserCircleIcon,
-  Cog6ToothIcon,
   PowerIcon,
+  // ChevronRightIcon,
+  // ChevronDownIcon,
 } from "@heroicons/react/24/solid";
-import logo from "../../assets/Logo.png";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { FaWpforms } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { RxCross2 } from "react-icons/rx";
+import logo from "../../assets/Logo.png";
 
-const Sidebar = () => {
+const SidebarWithBurgerMenu = () => {
   const { logOut } = useContext(AuthContext);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [open, setOpen] = useState(0);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
+
+  // const handleOpen = (value) => {
+  //   setOpen(open === value ? 0 : value);
+  // };
+
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
   const handleLogout = () => {
     Swal.fire({
@@ -44,65 +54,69 @@ const Sidebar = () => {
 
   return (
     <>
-      <button
-        className="md:hidden p-4 fixed top-0 right-0 z-50"
-        onClick={() => setIsOpen(!isOpen)}
+      <IconButton
+        variant="text"
+        size="lg"
+        onClick={openDrawer}
+        className="fixed top-0 left-0 z-50 p-4"
       >
-        {isOpen ? (
-          <RxCross2 className="h-6 w-6 text-gray-600" />
+        {isDrawerOpen ? (
+          <XMarkIcon className="h-8 w-8 stroke-2" />
         ) : (
-          <GiHamburgerMenu className="h-6 w-6 text-gray-600" />
+          <Bars3Icon className="h-8 w-8 stroke-2" />
         )}
-      </button>
-      <Card
-        className={`bg-deep-orange-50 w-64 p-4 shadow-xl shadow-blue-gray-900/5 sticky top-0 h-full transform ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:h-full`}
-      >
-        <div className="mb-2">
-          <Typography variant="h5" color="blue-gray">
-            <img src={logo} alt="logo" className="w-24" />
-          </Typography>
-        </div>
-        <List>
-          <Link to="/dashboard/home">
-            <ListItem className="flex gap-5">
-              <PresentationChartBarIcon className="h-5 w-4" />
-              Dashboard
+      </IconButton>
+      <Drawer open={isDrawerOpen} onClose={closeDrawer}>
+        <Card
+          color="transparent"
+          shadow={false}
+          className="h-[calc(100vh-2rem)] w-full p-1 bg-deep-orange-50 shadow-xl shadow-blue-gray-900/5 sticky top-0"
+        >
+          <div className="mb-2 flex items-end gap-1 py-4 ">
+            <img src={logo} alt="brand" className="h-14 w-14" />
+            <Typography variant="h5" color="blue-gray">
+              Online School
+            </Typography>
+          </div>
+          <List>
+            <Link to="/dashboard/home">
+              <ListItem>
+                <ListItemPrefix>
+                  <PresentationChartBarIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Dashboard
+              </ListItem>
+            </Link>
+
+            <Link to="/dashboard/admissionForm">
+              <ListItem>
+                <ListItemPrefix>
+                  <FaWpforms className="h-4 w-4" />
+                </ListItemPrefix>
+                Admission Form
+              </ListItem>
+            </Link>
+
+            <Link to="/dashboard/profile">
+              <ListItem>
+                <ListItemPrefix>
+                  <UserCircleIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Profile
+              </ListItem>
+            </Link>
+
+            <ListItem onClick={handleLogout}>
+              <ListItemPrefix>
+                <PowerIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Log Out
             </ListItem>
-          </Link>
-
-          <Link to="/dashboard/admissionForm">
-            <ListItem className="flex gap-5">
-              <FaWpforms className="h-4 w-4" />
-              Admission Form
-            </ListItem>
-          </Link>
-
-          <Link to="/dashboard/profile">
-            <ListItem className="flex gap-5">
-              <UserCircleIcon className="h-5 w-5" />
-              Profile
-            </ListItem>
-          </Link>
-
-          {/* <ListItem component={Link} to="/dashboard/settings">
-            <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Settings
-          </ListItem> */}
-
-          <ListItem onClick={handleLogout}>
-            <ListItemPrefix>
-              <PowerIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Log Out
-          </ListItem>
-        </List>
-      </Card>
+          </List>
+        </Card>
+      </Drawer>
     </>
   );
 };
 
-export default Sidebar;
+export default SidebarWithBurgerMenu;

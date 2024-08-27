@@ -83,7 +83,7 @@ const Dashboard = () => {
           Quick Links
         </Typography>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Link>
+          <Link to="/dashboard/admissionForm">
             <Card className="p-6 shadow-md bg-white hover:bg-gray-100 transition-colors">
               <Typography variant="h6" color="blue-gray">
                 Admission Form
@@ -91,7 +91,7 @@ const Dashboard = () => {
             </Card>
           </Link>
 
-          <Link>
+          <Link to="/dashboard/profile">
             <Card className="p-6 shadow-md bg-white hover:bg-gray-100 transition-colors">
               <Typography variant="h6" color="blue-gray">
                 Student Profiles
