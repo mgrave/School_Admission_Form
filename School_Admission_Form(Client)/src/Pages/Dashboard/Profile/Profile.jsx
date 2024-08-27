@@ -12,10 +12,6 @@ const Profile = () => {
     <div className="p-6 min-h-screen">
       <div className="flex justify-between items-center mb-8">
         <Typography variant="h4" color="blue-gray">
-          <h2 className="text-red-500 mb-5">
-            This page includes static items, intended for illustrative
-            purposes.....
-          </h2>
           Profile Page
         </Typography>
         <IconButton variant="text" color="blue-gray">
